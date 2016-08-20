@@ -1,2 +1,14 @@
-<h1>Tripps#index</h1>
-<p>Find me in app/views/tripps/index.html.erb</p>
+<h1>Tripps</h1>
+
+<% if @tripps.any? %>
+	<ul>
+		<% @tripps.each do |trip| %>
+			<li>
+			<%= link_to trip.name, tripp_path(trip) %>
+			</li>
+			<% end %>
+	</ul>
+<% else %>
+<% end %>
+
+	<%= link_to "Add Tripp", new_tripp_path %>

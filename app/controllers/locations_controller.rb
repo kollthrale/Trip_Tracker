@@ -1,37 +1,34 @@
 class LocationsController < ApplicationController
-  before_action :tripp
-
-
-  before_action :location, except: [:index, :new, :create]
-
-  def index
   
-  	@locations = @tripp.locations
-  end
-
   def show
-
+  	@tripp = Tripp.find(params[:tripp_id])
+  	@location = @tripp.locations.find(params[:id])
   end
 
   def new
+  	@tripp = Tripp.find(params[:tripp_id])
   	@location = Location.new
   end
 
-  def create 
+  def create
+  	@tripp = Tripp.find(params[:tripp_id])
   	@location = @tripp.locations.new(location_params)
-  	if @location.save
+  	if @location.save 
   		redirect_to tripp_location_path(@tripp, @location)
-  	else
-  		render.new
+  	else 
+  		render :new 
   	end
   end
 
-
   def edit
+  	@tripp = Tripp.find(params[:tripp_id])
+  	@location = @tripp.locations.find(params[:id])
   end
 	
 
 	def update
+		@tripp = Tripp.find(params[:tripp_id])
+		@location = @tripp.locations.find(params[:id])
 		if @location.update(location_params)
 			redirect_to tripp_location_path(@tripp, @location)
 		else
@@ -40,24 +37,17 @@ class LocationsController < ApplicationController
 	end
 
 	def destroy
+		@tripp = Tripp.find(params[:tripp_id])
+		@location = @tripp.locations.find(params[:id])
 		@location.destroy
-		redirect_to tipp_locations_path(@tripp)
+		redirect_to tripp_path(@tripp)
 	end
 
 	private
-
 		def location_params
-				params.require(:location).permit(:name, :category, :cost, :hours)
+
+			params.require(:location).permit(:name, :category, :cost, :hours)
 		end
-
-
-	def tripp
-		@tripp = Tripp.find(params[:tripp_id])
-	end
-
-	def location
-		@location = @tripp.locations.find(params[:id])
-	end
 end
 
 

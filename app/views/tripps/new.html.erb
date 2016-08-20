@@ -1,2 +1,5 @@
-<h1>Tripps#new</h1>
-<p>Find me in app/views/tripps/new.html.erb</p>
+<h1>New Tripp</h1>
+
+<%= render(partial: 'tripp_form') %>
+
+<%= link_to 'Back to All Tripps', tripps_path %>

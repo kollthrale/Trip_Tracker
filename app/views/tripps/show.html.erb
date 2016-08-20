@@ -1,2 +1,19 @@
-<h1>Tripps#show</h1>
-<p>Find me in app/views/tripps/show.html.erb</p>
+<h1><%= @tripp.name %></h1>
+
+<% if @tripp.vacation %>
+	<h2>Your Vacation</h2>
+<% else %>
+	<h2>Your Business Trip</h2>
+<% end %>
+<h2><%= @tripp.date %> for <%= @tripp.duration %> Days</h2>
+<br />
+
+<%= render(partial: 'location_list') %>
+
+<%= link_to "Add Location", new_tripp_location_path(@tripp) %>
+
+<br />
+<%= link_to "Edit Tripp", edit_tripp_path(@tripp) %>
+| <% link_to "Delete Tripp", tripp_path(@tripp), method: :delete, data: {confirm: "Are you sure you want to delete this Tripp?"} %>
+<br />
+<%= link_to "Back To All Tripps", tripps_path %>

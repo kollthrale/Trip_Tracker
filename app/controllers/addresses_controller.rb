@@ -1,31 +1,27 @@
 class AddressesController < ApplicationController
-  before_action :location
-
-
+  before_action :location, except: [:new, :create]
   before_action :address, except: [:index, :new, :create]
-
+  before_action :tripp, only: :create
   def index
   
-  	@adresses = @location.addresses
+  	@addresses = @location.addresses
   end
 
   def show
-
   end
 
   def new
-  	@address = Adress.new
+  	@address = Address.new
   end
 
   def create 
-  	@address = @location.addresses.new(address_params)
+  	@address = Address.new(address_params)
   	if @address.save
-  		redirect_to location_address_path(@location, @address)
+  		redirect_to tripp_location_path(@tripp, @location)
   	else
-  		render.new
+  		render :new
   	end
   end
-
 
   def edit
   end
@@ -49,13 +45,15 @@ class AddressesController < ApplicationController
 		def address_params
 				params.require(:address).permit(:street, :coty, :state, :zip)
 		end
-
+	def tripp
+		@tripp = Tripp.find(params[:tripp_id])
+	end
 
 	def location
 		@location = Location.find(params[:location_id])
 	end
 
 	def address
-		@address = @location.addresses.find(params[:id])
+		@address = Address.find(params[:id])
 	end
 end

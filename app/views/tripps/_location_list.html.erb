@@ -1,0 +1,10 @@
+<% if @tripp.locations.any? %>
+	<ul>
+		<% @tripp.locations.each do |location| %>
+			<li>
+			<%= link_to location.name, tripp_location_path(@tripp, location) %>
+			</li>
+			<% end %>
+	</ul>
+<% else %>
+<% end %>

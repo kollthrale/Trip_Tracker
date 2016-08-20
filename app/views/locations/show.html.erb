@@ -1,2 +1,14 @@
-<h1>Locations#show</h1>
-<p>Find me in app/views/locations/show.html.erb</p>
+<h1><%= @location.name %></h1>
+<br />
+<h2><%= @location.category %></h2>
+<br />
+<h4>Price: <%= @location.cost %></h4>
+<br />
+<h4>Hours: <%= @location.hours %></h4>
+<br />
+<%= render(partial: "address_list")%>
+
+<%= link_to 'Add Address', new_address_path %>
+<%= link_to 'Edit Location', edit_tripp_location_path(@tripp, @location) %>
+<%= link_to 'Delete Location', tripp_location_path(@tripp, @location), method: :delete, data: {confirm: 'Really Delete?'} %>
+<%= link_to 'Back to Trip', tripp_path(@tripp) %>

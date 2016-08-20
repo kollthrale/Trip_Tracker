@@ -1,0 +1,27 @@
+<% if @location.errors.any? %>
+	<ul>
+		<% @location.errors.full_messages.each do |error| %>
+			<li><%= error %></li>
+			<% end %>
+	</ul>
+<% end %>
+
+<%= form_for [@tripp, @location] do |f| %>
+	<%= f.label  :name %>
+	<%= f.text_field :name %>
+<br />
+	<%= f.label :category %>
+	<%= f.select :category, Location.category %>
+<br />
+	<%= f.label :hours %>
+	<%= f.text_field :hours %>
+<br />
+	<%= f.label :cost %> (Days)
+	<%= f.select :cost,  options_for_select([["Select One", ""], "$", "$$", "$$$", "$$$$"]) %>
+
+
+<br />
+	<%= f.submit %>
+<% end %>
+<br />
+<%= link_to "Back", tripps_path %>
