@@ -1,4 +1,11 @@
-<%= form_for [@location, @address] do |f| %>	
+<% if @address.errors.any? %>
+	<ul>
+		<% @address.errors.full_messages.each do |error| %>
+			<li><%= error %></li>
+			<% end %>
+	</ul>
+<% end %>
+<%= form_for [@tripp, @location, @address] do |f| %>
 	<%= f.label :street  %>
 	<%= f.text_field :street %>
 	<br />
@@ -9,7 +16,8 @@
 	<%= f.text_field :state %>
 	<br />
 	<%= f.label :zip %>
-	<%= f.text_field :zip %>
+	<%= f.number_field :zip %>
 	<br />
+	<%= f.hidden_field :location_id, value: @location.id %>
 	<%= f.submit %>
 <% end %>
