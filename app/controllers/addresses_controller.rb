@@ -28,7 +28,7 @@ class AddressesController < ApplicationController
 
 	def update
 		if @address.update(address_params)
-			redirect_to location_address_path(@location, @address)
+			redirect_to tripp_location_path(@tripp, @location)
 		else
 			render :edit
 		end

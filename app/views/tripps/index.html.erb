@@ -1,9 +1,9 @@
-<h1>Tripps</h1>
-
+<h1 class="logo">Tripps</h1>
+<div>
 <% if @tripps.any? %>
 	<ul>
 		<% @tripps.each do |trip| %>
-			<li>
+			<li class="nav">
 			<%= link_to trip.name, tripp_path(trip) %>
 			</li>
 			<% end %>
@@ -12,3 +12,4 @@
 <% end %>
 
 	<%= link_to "Add Tripp", new_tripp_path %>
+</div>
