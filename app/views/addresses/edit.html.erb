@@ -1,3 +1,25 @@
-<h1>Edit Address</h1>
-<%= render(partial: 'addresses_form') %>
-<%= link_to 'Back', edit_tripp_location_path(@tripp, @location) %>
+<nav>
+  <div class="nav-wrapper">
+    <div class="col s12">
+      <a href=<%= tripps_path %> class="breadcrumb">All Tripps</a>
+      <a href=<%= tripp_path(@tripp) %> class="breadcrumb">Tripp</a>
+      <a href="#!" class="breadcrumb">Edit Address</a>
+    </div>
+  </div>
+</nav>
+
+<div class="row">
+  <div class="col s12">
+    <div class="card clear-opacity">
+      <div class="card-content white-text">
+        <span class="card-title">Edit Address</span>
+        <p>
+        	<%= render(partial: 'addresses_form') %>
+        </p>
+      </div>
+      <div class="card-action">
+        <a><%= link_to 'Back', edit_tripp_location_path(@tripp, @location) %></a>
+      </div>
+    </div>
+  </div>
+</div>

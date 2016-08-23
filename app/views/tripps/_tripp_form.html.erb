@@ -9,9 +9,16 @@
 <%= form_for @tripp do |f| %>
 	<%= f.label  :name %>
 	<%= f.text_field :name %>
-<br />
-	<%= f.label :vacation %>
-	<%= f.check_box :vacation %>
+	<br />
+	<div class="switch">
+    <label>
+      Business
+      <%= f.check_box :vacation %>
+      <span class="lever"></span>
+      Vacation
+    </label>
+  </div>
+
 <br />
 	<%= f.label :date %>
 	<%= f.date_field :date %>
@@ -19,6 +26,15 @@
 	<%= f.label :duration %> (Days)
 	<%= f.select :duration, (1..31).to_a %>
 <br />
-	<%= f.submit %>
+    <div class="file-field input-field">
+      <div class="btn">
+        <span>Background Image</span>
+        <input type="file">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div>
+    </div>
+	<a class="waves-effect waves-light btn"><%= f.submit %></a>
 <% end %>
 <br />

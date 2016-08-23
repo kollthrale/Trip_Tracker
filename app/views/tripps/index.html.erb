@@ -1,15 +1,31 @@
-<h1 class="logo">Tripps</h1>
-<div>
-<% if @tripps.any? %>
-	<ul>
-		<% @tripps.each do |trip| %>
-			<li class="nav">
-			<%= link_to trip.name, tripp_path(trip) %>
-			</li>
-			<% end %>
-	</ul>
-<% else %>
-<% end %>
-
-	<%= link_to "Add Tripp", new_tripp_path %>
-</div>
+<nav>
+  <div class="nav-wrapper">
+    <div class="col s12">
+      <a href=<%= tripps_path %> class="breadcrumb"></a>
+    </div>
+  </div>
+</nav>
+<div class="row">
+  <div class="col s12">
+    <div class="card clear-opacity">
+      <div class="card-content white-text">
+        <span class="card-title no-opacity"><h1>Tripps</h1></span>
+        <p>
+        	<% if @tripps.any? %>
+        		<ul class="collection with-header">
+        			<% @tripps.each do |trip| %>
+        				<li class="collection-item card-panel black">
+        					<%= link_to trip.name, tripp_path(trip) %>
+        				</li>
+        			<% end %>
+        		</ul>
+        	<% else %>
+        	<% end %>
+				</p>
+      </div>
+      <div class="card-action">
+      <a><%= link_to "Add Tripp", new_tripp_path %></a>
+      </div>
+    </div>
+  </div>
+</div> 

@@ -5,22 +5,25 @@
 			<% end %>
 	</ul>
 <% end %>
-
+<div class="container">
 <%= form_for [@tripp, @location] do |f| %>
+	<div class='input-field'>
 	<%= f.label  :name %>
 	<%= f.text_field :name %>
-<br />
+	</div>
+	<div>
 	<%= f.label :category %>
+	<br />
 	<%= f.select :category, Location.category %>
-<br />
+	</div>
+	<div class='input-field'>
 	<%= f.label :hours %>
 	<%= f.text_field :hours %>
-<br />
-	<%= f.label :cost %> (Days)
+	</div>
+	<div>
+	<%= f.label :cost %>
 	<%= f.select :cost,  options_for_select([["Select One", ""], "$", "$$", "$$$", "$$$$"]) %>
-
-
-<br />
-	<%= f.submit %>
+	</div>
+	<a class="waves-effect waves-light btn"><%= f.submit %></a>
 <% end %>
-<br />
+</div>

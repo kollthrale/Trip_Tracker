@@ -1,10 +1,14 @@
 <% if @tripp.locations.any? %>
-	<ul>
+	<div>
+	<ul class="collection with-header">
 		<% @tripp.locations.each do |location| %>
-			<li>
-			<%= link_to location.name, tripp_location_path(@tripp, location) %>
+			<li class="collection-item card-panel black">
+				<div>
+					<%= link_to location.name, tripp_location_path(@tripp, location) %>
+				</div>
 			</li>
-			<% end %>
+		<% end %>
 	</ul>
+	</div>
 <% else %>
 <% end %>

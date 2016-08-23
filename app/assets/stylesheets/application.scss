@@ -1,0 +1,47 @@
+@import "materialize";
+
+body {
+	background-image: url('paris.jpg');
+	background-repeat:no-repeat;
+	background-size: cover;
+	
+}
+a {
+	color: orange;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: white;
+	text-shadow:
+		-2px -2px 0 #000,  
+		2px -2px 0 #000,
+		-2px 2px 0 #000,
+		2px 2px 0 #000;
+}
+
+.nav-wrapper {
+	padding-left: 10px;
+	background-color: #5A3627;
+}
+
+.clear-opacity {
+	background: rgba(0, 0, 0, 0.65);
+}
+.no-opacity {
+	opacity: 1;
+}
+
+.blacken li {
+	background: rgb(0, 0, 0);
+	background-color: rgb(0, 0, 0)
+}
+
+.underline {
+	text-decoration: none;
+  border-bottom: 3px solid white;
+}
+
+.row {
+	align: center;
+	width: 50%;
+}

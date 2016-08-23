@@ -1,21 +1,35 @@
-<div class="hero">
-<h1><%= @location.name %></h1>
-<h4><%= @location.category %></h4>
-<h4>Price: <%= @location.cost %></h4>
-<h4>Hours: <%= @location.hours %></h4>
-<%= render(partial: "address_list")%>
+<nav>
+  <div class="nav-wrapper">
+    <div class="col s12">
+      <a href=<%= tripps_path %> class="breadcrumb">All Tripps</a>
+      <a href=<%= tripp_path(@tripp) %> class="breadcrumb">Tripp</a>
+      <a href="#!" class="breadcrumb">Location</a>
+    </div>
+  </div>
+</nav>
+<div class="row">
+  <div class="col s12">
+    <div class="card clear-opacity">
+      <div class="card-content white-text">
+        <span class="card-title no-opacity underline"><h2 class="underline"><%= @location.name %></h2></span>
+        <p>
+					<h4><%= @location.category %></h4>
+					<h4>Price: <%= @location.cost %></h4>
+					<h4>Hours: <%= @location.hours %></h4>
+					<%= render(partial: "address_list")%>
+				</p>
+      </div>
+      <div class="card-action">
+       <a><% if @location.address.present? %>
+				<%= link_to 'Edit Address', edit_tripp_location_address_path(@tripp, @location, @location.address) %>
+				<% else %>
+				<%= link_to 'Add Address', new_tripp_location_address_path(@tripp, @location) %>
+				<% end %> 
+				</a>
 
-
-<div class="primary-footer">
-<% if @location.address.present? %>
-  <%= link_to 'Edit Address', edit_tripp_location_address_path(@tripp, @location, @location.address) %>
-<% else %>
-  <%= link_to 'Add Address', new_tripp_location_address_path(@tripp, @location) %>
-<% end %>
-
-| <%= link_to 'Edit Location', edit_tripp_location_path(@tripp, @location) %> |
-<%= link_to 'Delete Location', tripp_location_path(@tripp, @location), method: :delete, data: {confirm: 'Really Delete?'} %>
-<br />
-<%= link_to 'Back to Trip', tripp_path(@tripp) %> 
-</div>
+       <a><%= link_to 'Edit Location', edit_tripp_location_path(@tripp, @location) %> </a>
+       <a><%= link_to 'Delete Location', tripp_location_path(@tripp, @location), method: :delete, data: {confirm: 'Really Delete?'} %></a>
+      </div>
+    </div>
+  </div>
 </div>
